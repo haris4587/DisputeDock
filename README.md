@@ -21,8 +21,12 @@ DisputeDock turns a freelance scope into an explicit on-chain state machine. A c
 | Deployment status | FINALIZED · MAJORITY_AGREE · Normal/Full Consensus · Simulation off |
 | Exact deployed source | Commit `5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd` |
 | Source SHA-256 | `2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b` |
+| Live agreement | `dock-demo-80-live` · two distinct Studio accounts · 5 test GEN |
+| Judgment | [0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018](https://explorer-studio.genlayer.com/tx/0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018) · FINALIZED · MAJORITY_AGREE |
+| Verdict | `PARTIALLY_DELIVERED` · 72% worker / 28% client · VERIFIED evidence |
+| Settlement | [0xb802ca5e61304f4f65b9c7f82c53a2ee36d6f51cd75391145e8cb5ef68d3b123](https://explorer-studio.genlayer.com/tx/0xb802ca5e61304f4f65b9c7f82c53a2ee36d6f51cd75391145e8cb5ef68d3b123) · 3.6 / 1.4 test GEN · zero locked |
 
-`npm run test:deployment` independently retrieves the deployed code, schema, and transaction from Studionet and fails unless the source bytes, hash, address, 25-method schema, finalized status, and majority-agree result all match this repository.
+`npm run test:deployment` independently retrieves the deployed code, schema, and transaction from Studionet. `npm run test:lifecycle` independently reads the live agreement, verdict, judgment and settlement receipts, exact split, and zero locked balance. Both fail closed when any recorded proof diverges.
 
 ## Why this is a GenLayer Builder Project
 
@@ -136,6 +140,8 @@ src/main.jsx                    React app and GenLayer/MetaMask client
 src/styles.css                  Responsive visual system
 tests/direct/                   Direct-mode lifecycle/security tests
 scripts/verify-contract-schema.mjs
+scripts/verify-deployment.mjs
+scripts/verify-lifecycle.mjs
 demo/evidence/                  Hashable demo evidence bytes
 docs/                           Architecture, security, testing, deployment, demo
 .github/workflows/ci.yml        Reproducible validation
@@ -165,6 +171,7 @@ To verify that the current Studionet RPC recognizes the contract schema:
 ~~~bash
 npm run test:schema
 npm run test:deployment
+npm run test:lifecycle
 ~~~
 
 This check needs network access. It asks Studionet to compile and return the schema for the exact contract source; it does not deploy or spend test GEN.
@@ -177,10 +184,10 @@ VITE_NETWORK=studionet
 VITE_GITHUB_URL=https://github.com/haris4587/DisputeDock
 VITE_SOURCE_COMMIT=5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd
 VITE_DEPLOYMENT_TX=0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a
-VITE_CONSENSUS_TX=
+VITE_CONSENSUS_TX=0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018
 ~~~
 
-The tracked `src/deployment.json` provides the verified public defaults above. Environment variables may override them for a later deployment. Empty unverified fields, including the lifecycle consensus transaction until it exists, render as **Awaiting verified record**.
+The tracked `src/deployment.json` provides the verified public defaults above, including the finalized deployment and full-consensus judgment transactions. Environment variables may override them for a later deployment. Any empty unverified field renders as **Awaiting verified record**.
 
 ## MetaMask behavior
 

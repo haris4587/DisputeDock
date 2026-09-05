@@ -1,6 +1,6 @@
 # Verification Evidence
 
-This ledger distinguishes reproducible build evidence from wallet-protected deployment evidence. Blank or pending records are never treated as proof.
+This ledger records reproducible build evidence and the finalized Studionet deployment and lifecycle. Values below were retrieved from the deployed contract or transaction receipts; sample fixtures remain explicitly labeled.
 
 ## Repository verification
 
@@ -12,6 +12,7 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 | Production build | PASS | npm run build |
 | Studionet schema compilation | PASS — 25 methods | npm run test:schema |
 | Deployed contract verification | PASS — exact source, finalized, majority agree | npm run test:deployment |
+| Finalized lifecycle verification | PASS — verdict, split, settlement, zero locked balance | npm run test:lifecycle |
 | Dependency lock | Present | npm ci |
 
 ## Studionet schema response
@@ -33,7 +34,7 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 | Repository | https://github.com/haris4587/DisputeDock |
 | Initial source/evidence commit | 5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd |
 | Contract SHA-256 at evidence commit | 2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b |
-| Final metadata commit | Pending final proof commit |
+| Deployment metadata commit | 2500694b4ec3808f9ee495441b141d06730e6933 |
 | Build date | 2026-09-05 UTC |
 
 ## Commit-pinned evidence commitments
@@ -78,22 +79,30 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 
 | Field | Verified value |
 |---|---|
-| Agreement ID | dock-demo-80 |
-| Create transaction | Pending |
-| Worker acceptance transaction | Pending |
-| Funding transaction | Pending |
-| Submission transaction | Pending |
-| Client dispute transaction | Pending |
-| Worker response transaction | Pending |
-| Judgment transaction | Pending |
-| Finalized verdict JSON | Pending |
-| Settlement transaction | Pending appeal window or mutual resolution |
+| Agreement ID | `dock-demo-80-live` |
+| Client | `0x29C7cD11CcB902f57B5B20F5A29C3E970A10A92e` |
+| Worker | `0x028C4a8A498b48A2C7eD164E4149A4389AF9e367` |
+| Agreement hash | `92c91c83e5b4cf9fdec308de79dfe1ac545c1591223e1c1523999b4dd10543a1` |
+| Create transaction | `0x60db660f56457c2c53e749acf81b73e72cd8d2dcd67f6be61d2fb5c4a04e5056` |
+| Worker acceptance transaction | `0xda327bcbc0836113eb180217c98c6a6da63cf48f2d5793677d3e1c67e40ac1d1` |
+| Funding transaction | `0xa76ac1babcead04988938e9a99d0247d3c0704b91e6fd5a5155e8aedbe6cce0c` — 5 test GEN |
+| Submission transaction | `0x383fc36748911f444f389bea8d77c3282e345a334048d5f02ffc65b9a8d500a0` |
+| Client dispute transaction | `0x141aa786b2a0e0a3226eac17dae10075e87bb5d84c49101cb741192c2f934fe5` |
+| Worker response transaction | `0x7f89ab778a2492c2613aba22308f3d5c98279fe3aa8ddbb7eb00f0cac95acb73` |
+| Judgment transaction | `0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018` |
+| Judgment finality | FINALIZED; MAJORITY_AGREE; validator votes AGREE, AGREE, IDLE, IDLE, AGREE |
+| Verdict | `dock-demo-80-live:v0`; `PARTIALLY_DELIVERED`; revision 0 |
+| Compliance / split | 72% overall; 7,200 bps worker; 2,800 bps client |
+| Evidence / confidence | VERIFIED; 5 retrieved commitments; HIGH confidence |
+| Verdict snapshot | `demo/evidence/full-consensus-verdict.json` |
+| Settlement transaction | `0xb802ca5e61304f4f65b9c7f82c53a2ee36d6f51cd75391145e8cb5ef68d3b123`; FINALIZED; 5/5 AGREE |
+| Final settlement | `SETTLED`; `FINAL_CONSENSUS_SPLIT`; 3.6 test GEN worker / 1.4 test GEN client; escrow remaining 0 |
 
-The deployed contract is genuine and finalized. The separate wallet-to-wallet lifecycle verdict remains pending until a second participant wallet accepts the exact agreement and a test-GEN escrow is funded; the deployment transaction is not mislabeled as that adjudication.
+The full lifecycle used two distinct Studio accounts, Normal/Full Consensus, Simulation Mode disabled, native test GEN, and commit-pinned evidence bytes. The judgment transaction is separate from the deployment transaction and is not a fabricated sample. After the bounded appeal window closed without an appeal, `settle_judgment` applied the recorded 72/28 split and released the entire escrow.
 
 ## Non-fabrication statement
 
-No pending field above represents a completed action. The repository does not contain invented wallet addresses, contract addresses, transaction hashes, validator results, or explorer screenshots. Sample JSON in documentation is labeled as a schema or test vector.
+The repository does not contain invented wallet addresses, contract addresses, transaction hashes, validator results, or explorer screenshots. Sample JSON in documentation is labeled as a schema or test vector; the lifecycle verdict snapshot is a genuine finalized on-chain read.
 
 ## Evidence-file policy
 

@@ -127,9 +127,10 @@ This is a genuine live RPC compatibility check. It is not a deployment.
 
 ~~~bash
 npm run test:deployment
+npm run test:lifecycle
 ~~~
 
-This retrieves the deployed contract code, deployed schema, and deployment transaction from Studionet. It fails unless the code is byte-identical to `contracts/dispute_dock.py`, both source hashes match the recorded SHA-256, the transaction targets the recorded address, all 25 methods exist, and the transaction is `FINALIZED` with `MAJORITY_AGREE`.
+The deployment check retrieves the deployed code, schema, and deployment transaction from Studionet. It fails unless the code is byte-identical to `contracts/dispute_dock.py`, both source hashes match, all 25 methods exist, and the deployment is `FINALIZED` with `MAJORITY_AGREE`. The lifecycle check independently reads the finalized demo agreement, verdict, judgment receipt, settlement receipt, payouts, refund, and zero locked balance.
 
 Recorded result:
 
@@ -172,7 +173,7 @@ After deployment:
 10. retrieve get_latest_verdict;
 11. record transaction hash, contract address, verdict, source commit, and evidence hashes in EVIDENCE.md.
 
-The deployment is already finalized and independently verified. Until the distinct-participant lifecycle flow is complete, its verdict fields must say not recorded rather than using sample values.
+The deployment and distinct-participant lifecycle judgment are finalized and independently recorded in `EVIDENCE.md`. Future deployments must keep verdict fields unrecorded until a genuine finalized lifecycle exists rather than copying the current demonstration values.
 
 ## CI
 

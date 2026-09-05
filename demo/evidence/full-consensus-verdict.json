@@ -1,0 +1,101 @@
+{
+  "agreement_hash": "92c91c83e5b4cf9fdec308de79dfe1ac545c1591223e1c1523999b4dd10543a1",
+  "agreement_id": "dock-demo-80-live",
+  "citations": [
+    "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/agreement-terms.md",
+    "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/worker-deliverable.md",
+    "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/client-dispute.md",
+    "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/worker-response.md"
+  ],
+  "client_refund_bps": 2800,
+  "confidence": "HIGH",
+  "criteria": [
+    {
+      "finding": "Worker deliverable describes layout breakpoints at desktop, tablet, 800px, and 480px (below the 390px spec), collapsing navigation, single-column grids, stacked proof records, and form controls within viewport. Evidence is textual only without a live deployment screenshot or device test log, so full confidence is limited; partial credit supported.",
+      "name": "Responsive design",
+      "score": 85,
+      "weight_bps": 2500
+    },
+    {
+      "finding": "Worker listed all five required application areas (case desk, new agreement, lifecycle actions, evidence lab, protocol documentation) matching the agreement terms. No counter-evidence was submitted by the client on this criterion.",
+      "name": "Five complete pages",
+      "score": 90,
+      "weight_bps": 2500
+    },
+    {
+      "finding": "Both worker and client evidence agree that the Connect Wallet control does not call eth_requestAccounts, no address is displayed, and chain detection/switching cannot be reached. Agreement terms explicitly state 'A decorative control does not satisfy this requirement.' Only a visible UI element is present, with no functional provider call.",
+      "name": "Working MetaMask wallet integration",
+      "score": 10,
+      "weight_bps": 2000
+    },
+    {
+      "finding": "Worker states repository and public deployment were supplied before the agreement submission timestamp; client dispute does not contest timeliness. Substantive on-time delivery is supported by both parties' statements.",
+      "name": "Delivery by the committed deadline",
+      "score": 90,
+      "weight_bps": 3000
+    }
+  ],
+  "evidence_error": "",
+  "evidence_hashes": [
+    {
+      "bytes": 1996,
+      "expected_sha256": "f18bfdc273e59b15dfcc603acbce4df25e85529a4486c9dc42d43b5ae4a49e8a",
+      "sha256": "f18bfdc273e59b15dfcc603acbce4df25e85529a4486c9dc42d43b5ae4a49e8a",
+      "submitted_at": 1788630946,
+      "submitter": "CLIENT",
+      "type": "TERMS",
+      "url": "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/agreement-terms.md"
+    },
+    {
+      "bytes": 1036,
+      "expected_sha256": "d9504d98ec3c1ff6d4cb34e6f4fcade05aaa0b89a333ca423dd32838f157cddb",
+      "sha256": "d9504d98ec3c1ff6d4cb34e6f4fcade05aaa0b89a333ca423dd32838f157cddb",
+      "submitted_at": 1788631233,
+      "submitter": "WORKER",
+      "type": "DELIVERABLE",
+      "url": "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/worker-deliverable.md"
+    },
+    {
+      "bytes": 818,
+      "expected_sha256": "2328f5564c16d8783bf71fdc57dec9584c7939f6fff61dd6fccafadbfa7429fe",
+      "sha256": "2328f5564c16d8783bf71fdc57dec9584c7939f6fff61dd6fccafadbfa7429fe",
+      "submitted_at": 1788631233,
+      "submitter": "WORKER",
+      "type": "TEST_REPORT",
+      "url": "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/direct-test-report.md"
+    },
+    {
+      "bytes": 761,
+      "expected_sha256": "77cd41892ebede1d8fb96c8e085045bdbdcee0d82d9909edab3e98dc0c1218e7",
+      "sha256": "77cd41892ebede1d8fb96c8e085045bdbdcee0d82d9909edab3e98dc0c1218e7",
+      "submitted_at": 1788631324,
+      "submitter": "CLIENT",
+      "type": "ISSUE_LOG",
+      "url": "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/client-dispute.md"
+    },
+    {
+      "bytes": 640,
+      "expected_sha256": "436f8d2c19cf82c9f13a2d1e4696dfbd892ffcd9f0752142e929a047888070eb",
+      "sha256": "436f8d2c19cf82c9f13a2d1e4696dfbd892ffcd9f0752142e929a047888070eb",
+      "submitted_at": 1788631409,
+      "submitter": "WORKER",
+      "type": "COMMUNICATION",
+      "url": "https://raw.githubusercontent.com/haris4587/DisputeDock/5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd/demo/evidence/worker-response.md"
+    }
+  ],
+  "evidence_status": "VERIFIED",
+  "judgment_transaction": "0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018",
+  "overall_score": 72,
+  "recorded_at": 1788631544,
+  "revision": 0,
+  "risk_flags": [
+    "Responsive design evidence is self-described without authenticated device test screenshots; 390px breakpoint compliance inferred from 480px breakpoint mention only",
+    "Deadline evidence relies on worker statement with no independent timestamp attestation"
+  ],
+  "settlement_transaction": "0xb802ca5e61304f4f65b9c7f82c53a2ee36d6f51cd75391145e8cb5ef68d3b123",
+  "status": "PARTIALLY_DELIVERED",
+  "summary": "The worker fulfilled responsive design, five pages, and timely delivery, but both parties' authenticated evidence confirms the MetaMask integration is non-functional (no eth_requestAccounts call). Applying the locked weights (2500+2500+2000+3000 = 10000 bps): weighted score = (85×2500 + 90×2500 + 10×2000 + 90×3000)/10000 = (212500 + 225000 + 20000 + 270000)/10000 = 72.75% worker payout, 27.25% client remainder.",
+  "supersedes": "",
+  "verdict_id": "dock-demo-80-live:v0",
+  "worker_payout_bps": 7200
+}

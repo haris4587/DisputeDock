@@ -10,7 +10,7 @@ This file is the canonical deployment log. Values stay explicitly unrecorded unt
 | Default branch | main |
 | Initial source/evidence commit | 5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd |
 | Contract source SHA-256 at that commit | 2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b |
-| Final metadata commit | Pending final proof commit |
+| Deployment metadata commit | 2500694b4ec3808f9ee495441b141d06730e6933 |
 | Evidence commit | 5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd |
 
 ## Website
@@ -45,14 +45,24 @@ This file is the canonical deployment log. Values stay explicitly unrecorded unt
 
 | Field | Record |
 |---|---|
-| Agreement ID | dock-demo-80 |
-| Judgment transaction | Requires owner-approved transaction |
-| Finalized status | Not recorded yet |
-| Verdict revision | Not recorded yet |
-| Overall score | Not recorded yet |
-| Worker payout basis points | Not recorded yet |
-| Client refund basis points | Not recorded yet |
-| Evidence status | Not recorded yet |
+| Agreement ID | `dock-demo-80-live` |
+| Client / worker | `0x29C7...A92e` / `0x028C...e367` (distinct Studio accounts) |
+| Agreement hash | `92c91c83e5b4cf9fdec308de79dfe1ac545c1591223e1c1523999b4dd10543a1` |
+| Create transaction | `0x60db660f56457c2c53e749acf81b73e72cd8d2dcd67f6be61d2fb5c4a04e5056` |
+| Acceptance transaction | `0xda327bcbc0836113eb180217c98c6a6da63cf48f2d5793677d3e1c67e40ac1d1` |
+| Funding transaction | `0xa76ac1babcead04988938e9a99d0247d3c0704b91e6fd5a5155e8aedbe6cce0c` |
+| Submission transaction | `0x383fc36748911f444f389bea8d77c3282e345a334048d5f02ffc65b9a8d500a0` |
+| Dispute transaction | `0x141aa786b2a0e0a3226eac17dae10075e87bb5d84c49101cb741192c2f934fe5` |
+| Response transaction | `0x7f89ab778a2492c2613aba22308f3d5c98279fe3aa8ddbb7eb00f0cac95acb73` |
+| Judgment transaction | `0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018` |
+| Finalized status | FINALIZED; MAJORITY_AGREE; Normal/Full Consensus |
+| Verdict revision | `dock-demo-80-live:v0`; revision 0 |
+| Overall score | 72; `PARTIALLY_DELIVERED` |
+| Worker payout basis points | 7200 |
+| Client refund basis points | 2800 |
+| Evidence status | VERIFIED; five commitments; HIGH confidence |
+| Settlement transaction | `0xb802ca5e61304f4f65b9c7f82c53a2ee36d6f51cd75391145e8cb5ef68d3b123`; FINALIZED; 5/5 AGREE |
+| Final settlement | `FINAL_CONSENSUS_SPLIT`; 3.6 test GEN paid to worker; 1.4 test GEN refunded to client; 0 locked |
 
 ## Local and RPC verification
 
@@ -65,4 +75,4 @@ This file is the canonical deployment log. Values stay explicitly unrecorded unt
 | Studionet schema compilation | Pass; 25 methods returned |
 | Live deployed-code verification | Pass; exact source SHA-256, finalized, majority agree |
 
-The contract deployment is complete. The unrecorded lifecycle fields above are not project claims; they must be filled only from genuine finalized participant actions and a returned verdict.
+The deployment, adjudication, bounded appeal-window wait, and deterministic final settlement are complete.

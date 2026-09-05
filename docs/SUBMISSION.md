@@ -43,7 +43,8 @@ The responsive application includes genuine MetaMask account permission, Studio 
 | Public website | https://disputedock.ansaf1st33.chatgpt.site |
 | Intelligent Contract | https://explorer-studio.genlayer.com/address/0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42 |
 | Deployment transaction | https://explorer-studio.genlayer.com/tx/0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a |
-| Full-consensus transaction | To be recorded after genuine adjudication |
+| Full-consensus transaction | https://explorer-studio.genlayer.com/tx/0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018 |
+| Settlement transaction | https://explorer-studio.genlayer.com/tx/0xb802ca5e61304f4f65b9c7f82c53a2ee36d6f51cd75391145e8cb5ef68d3b123 |
 | Evidence ledger | https://github.com/haris4587/DisputeDock/blob/main/EVIDENCE.md |
 
 ## Technical proof
@@ -58,6 +59,8 @@ The responsive application includes genuine MetaMask account permission, Studio 
 | Network | GenLayer Studionet, chain 61999 |
 | Currency | Native test GEN only |
 | Live deployment | FINALIZED; MAJORITY_AGREE; exact source match |
+| Live adjudication | `dock-demo-80-live:v0`; 72% worker / 28% client; VERIFIED evidence; FINALIZED; MAJORITY_AGREE |
+| Final settlement | 3.6 / 1.4 test GEN; `FINAL_CONSENSUS_SPLIT`; escrow balance 0 |
 
 ## Disclaimer
 

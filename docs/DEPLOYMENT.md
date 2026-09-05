@@ -66,7 +66,7 @@ Build:
 npm run build
 ~~~
 
-Confirm the proof strip shows the real network, address, source commit, and deployment transaction. Consensus remains unrecorded until the real lifecycle transaction finalizes.
+Confirm the proof strip shows the real network, address, source commit, deployment transaction, and finalized lifecycle consensus transaction.
 
 ## 5. Execute a real lifecycle
 

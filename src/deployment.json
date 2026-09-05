@@ -6,7 +6,9 @@
   "contractSourceSha256": "2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b",
   "deploymentTransaction": "0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a",
   "deploymentStatus": "FINALIZED",
-  "consensusTransaction": "",
+  "consensusTransaction": "0x44edbca38d7ffa163cb584d9c9212d19aa040b119176c8155e49af516f8f1018",
+  "settlementTransaction": "0xb802ca5e61304f4f65b9c7f82c53a2ee36d6f51cd75391145e8cb5ef68d3b123",
+  "demoAgreementId": "dock-demo-80-live",
   "explorerUrl": "https://explorer-studio.genlayer.com",
   "websiteUrl": "https://disputedock.ansaf1st33.chatgpt.site",
   "studioTokenTransfersSupported": true

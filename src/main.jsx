@@ -425,7 +425,7 @@ function App() {
   const [chainId, setChainId] = useState("");
   const [walletError, setWalletError] = useState("");
   const [walletBusy, setWalletBusy] = useState(false);
-  const [lookupId, setLookupId] = useState("");
+  const [lookupId, setLookupId] = useState(deployment.demoAgreementId || "");
   const [agreement, setAgreement] = useState(null);
   const [submission, setSubmission] = useState(null);
   const [dispute, setDispute] = useState(null);
@@ -1063,7 +1063,7 @@ function App() {
             <div className="action-context">
               <label>
                 <span>Active agreement ID</span>
-                <input value={lookupId} onChange={(e) => setLookupId(e.target.value)} placeholder="dock-web-001" />
+                <input value={lookupId} onChange={(e) => setLookupId(e.target.value)} placeholder="dock-demo-80-live" />
               </label>
               <button className="button ghost" type="button" onClick={() => loadAgreement()} disabled={!CONTRACT_READY}>
                 <RefreshCw size={16} /> Refresh
