@@ -172,6 +172,23 @@ function normalizeError(error) {
   return String(message).replace(/^Error:\s*/, "").slice(0, 420);
 }
 
+function receiptHasFailedExecution(receipt) {
+  const consensusResult = receipt?.resultName || receipt?.result_name || "";
+  const leaderReceipt = receipt?.consensusData?.leaderReceipt || receipt?.consensus_data?.leader_receipt;
+  const leaderEntries = Array.isArray(leaderReceipt)
+    ? leaderReceipt
+    : leaderReceipt
+      ? [leaderReceipt]
+      : [];
+  return (
+    receipt?.txExecutionResultName === ExecutionResult.FINISHED_WITH_ERROR ||
+    ["FAILURE", "MAJORITY_DISAGREE", "NO_MAJORITY", "DETERMINISTIC_VIOLATION"].includes(
+      String(consensusResult),
+    ) ||
+    leaderEntries.some((entry) => entry?.execution_result === "ERROR")
+  );
+}
+
 function Field({ label, hint, className = "", ...props }) {
   return (
     <label className={"field " + className}>
@@ -671,7 +688,7 @@ function App() {
           interval: 4000,
           retries: 150,
         });
-        if (accepted?.txExecutionResultName === ExecutionResult.FINISHED_WITH_ERROR) {
+        if (receiptHasFailedExecution(accepted)) {
           throw new Error("Consensus accepted a failed execution; contract state was not changed.");
         }
         setTx({ stage: "accepted", label, hash, error: "" });
@@ -681,7 +698,7 @@ function App() {
           interval: 4000,
           retries: 150,
         });
-        if (finalized?.txExecutionResultName === ExecutionResult.FINISHED_WITH_ERROR) {
+        if (receiptHasFailedExecution(finalized)) {
           throw new Error("The transaction finalized with an execution error; state was not changed.");
         }
         setTx({ stage: "finalized", label, hash, error: "" });
