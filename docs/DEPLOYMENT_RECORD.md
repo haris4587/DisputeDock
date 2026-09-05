@@ -8,9 +8,10 @@ This file is the canonical deployment log. Values stay explicitly unrecorded unt
 |---|---|
 | Repository | https://github.com/haris4587/DisputeDock |
 | Default branch | main |
-| Source commit | Not recorded yet |
-| Contract source SHA-256 | Not recorded yet |
-| Evidence commit | Not recorded yet |
+| Initial source/evidence commit | 5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd |
+| Contract source SHA-256 at that commit | 2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b |
+| Final metadata commit | Not recorded yet |
+| Evidence commit | 5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd |
 
 ## Website
 
@@ -57,4 +58,3 @@ This file is the canonical deployment log. Values stay explicitly unrecorded unt
 | Studionet schema compilation | Pass; 25 methods returned |
 
 The unrecorded protected fields above are not project claims. They are the exact remaining records that must be filled from genuine finalized actions.
-

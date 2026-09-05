@@ -10,6 +10,7 @@
     "lint": "eslint src --max-warnings=0",
     "test:contract": "python3 -m py_compile contracts/dispute_dock.py && python3 -m pytest -q tests/direct",
     "test:schema": "node scripts/verify-contract-schema.mjs",
+    "test:evidence": "node scripts/verify-evidence.mjs",
     "test": "npm run lint && npm run test:contract && npm run build"
   },
   "dependencies": {

@@ -50,6 +50,11 @@ const CHAIN_HEX = "0x" + Number(studionet.id).toString(16);
 const EXPLORER_URL =
   studionet.blockExplorers?.default?.url ||
   "https://genlayer-explorer.vercel.app";
+const EVIDENCE_COMMIT = "5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd";
+const EVIDENCE_BASE =
+  "https://raw.githubusercontent.com/haris4587/DisputeDock/" +
+  EVIDENCE_COMMIT +
+  "/demo/evidence/";
 const CONTRACT_READY = /^0x[0-9a-fA-F]{40}$/.test(CONTRACT_ADDRESS);
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
@@ -413,8 +418,8 @@ function App() {
     description:
       "Build and deploy a responsive five-page website with a working MetaMask connection and deliver it before the committed deadline.",
     worker: "",
-    termsUrl: "",
-    termsHash: "",
+    termsUrl: EVIDENCE_BASE + "agreement-terms.md",
+    termsHash: "f18bfdc273e59b15dfcc603acbce4df25e85529a4486c9dc42d43b5ae4a49e8a",
     escrowGen: "5",
     acceptanceDeadline: localDate(24),
     submissionDeadline: localDate(168),
@@ -422,23 +427,23 @@ function App() {
     evidenceHours: "24",
     appealHours: "24",
     criteria:
-      "Responsive design|2500\nFive complete pages|2500\nWorking wallet integration|3000\nDelivery by deadline|2000",
+      "Responsive design|2500\nFive complete pages|2500\nWorking MetaMask wallet integration|2000\nDelivery by the committed deadline|3000",
   });
   const [submissionForm, setSubmissionForm] = useState({
-    deliverableUrl: "",
-    deliverableHash: "",
+    deliverableUrl: EVIDENCE_BASE + "worker-deliverable.md",
+    deliverableHash: "d9504d98ec3c1ff6d4cb34e6f4fcade05aaa0b89a333ca423dd32838f157cddb",
     evidence:
-      "REPOSITORY|https://raw.githubusercontent.com/owner/repo/commit/README.md|sha256\nTEST_REPORT|https://raw.githubusercontent.com/owner/repo/commit/report.md|sha256",
+      "TEST_REPORT|" + EVIDENCE_BASE + "direct-test-report.md|2328f5564c16d8783bf71fdc57dec9584c7939f6fff61dd6fccafadbfa7429fe",
     statement:
       "The committed milestone is complete. The linked deliverable and evidence correspond to the submitted SHA-256 digests.",
   });
   const [disputeForm, setDisputeForm] = useState({
-    evidence: "ISSUE_LOG|https://raw.githubusercontent.com/owner/repo/commit/issue.md|sha256",
+    evidence: "ISSUE_LOG|" + EVIDENCE_BASE + "client-dispute.md|77cd41892ebede1d8fb96c8e085045bdbdcee0d82d9909edab3e98dc0c1218e7",
     statement:
       "The wallet connection requirement does not work as agreed. The evidence records the reproducible failure.",
   });
   const [responseForm, setResponseForm] = useState({
-    evidence: "TEST_REPORT|https://raw.githubusercontent.com/owner/repo/commit/worker-response.md|sha256",
+    evidence: "COMMUNICATION|" + EVIDENCE_BASE + "worker-response.md|436f8d2c19cf82c9f13a2d1e4696dfbd892ffcd9f0752142e929a047888070eb",
     statement:
       "The remaining requirements were delivered. This response acknowledges and documents the wallet integration issue.",
   });
@@ -446,7 +451,7 @@ function App() {
     appealId: "appeal-web-001",
     statement:
       "New, hash-bound evidence materially changes one criterion and should be considered in the single permitted recheck.",
-    evidence: "OTHER|https://raw.githubusercontent.com/owner/repo/commit/new-evidence.md|sha256",
+    evidence: "TEST_REPORT|" + EVIDENCE_BASE + "appeal-new-evidence.md|55d6e8f341f14b77014d953957375520ebb2f0de0e815c1d2e76a7d2e7cd4dc0",
   });
   const [mutualForm, setMutualForm] = useState({
     proposalId: "mutual-web-001",
