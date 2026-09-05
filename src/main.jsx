@@ -37,19 +37,27 @@ import {
   Wallet,
   X,
 } from "lucide-react";
+import deployment from "./deployment.json";
 import "./styles.css";
 
-const CONTRACT_ADDRESS = (import.meta.env.VITE_CONTRACT_ADDRESS || "").trim();
+const CONTRACT_ADDRESS = (
+  import.meta.env.VITE_CONTRACT_ADDRESS || deployment.contractAddress || ""
+).trim();
 const GITHUB_URL =
   (import.meta.env.VITE_GITHUB_URL || "").trim() ||
   "https://github.com/haris4587/DisputeDock";
-const SOURCE_COMMIT = (import.meta.env.VITE_SOURCE_COMMIT || "").trim();
-const DEPLOYMENT_TX = (import.meta.env.VITE_DEPLOYMENT_TX || "").trim();
-const CONSENSUS_TX = (import.meta.env.VITE_CONSENSUS_TX || "").trim();
+const SOURCE_COMMIT = (
+  import.meta.env.VITE_SOURCE_COMMIT || deployment.contractSourceCommit || ""
+).trim();
+const SOURCE_HASH = deployment.contractSourceSha256;
+const DEPLOYMENT_TX = (
+  import.meta.env.VITE_DEPLOYMENT_TX || deployment.deploymentTransaction || ""
+).trim();
+const CONSENSUS_TX = (
+  import.meta.env.VITE_CONSENSUS_TX || deployment.consensusTransaction || ""
+).trim();
 const CHAIN_HEX = "0x" + Number(studionet.id).toString(16);
-const EXPLORER_URL =
-  studionet.blockExplorers?.default?.url ||
-  "https://genlayer-explorer.vercel.app";
+const EXPLORER_URL = deployment.explorerUrl;
 const EVIDENCE_COMMIT = "5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd";
 const EVIDENCE_BASE =
   "https://raw.githubusercontent.com/haris4587/DisputeDock/" +
@@ -863,15 +871,16 @@ function App() {
           <ProofItem
             label="Contract"
             value={CONTRACT_READY ? CONTRACT_ADDRESS : ""}
-            href={CONTRACT_READY ? EXPLORER_URL : ""}
+            href={CONTRACT_READY ? EXPLORER_URL + "/address/" + CONTRACT_ADDRESS : ""}
           />
           <ProofItem
-            label="Source commit"
+            label="Contract source"
             value={SOURCE_COMMIT}
             href={SOURCE_COMMIT ? GITHUB_URL + "/commit/" + SOURCE_COMMIT : ""}
           />
-          <ProofItem label="Deployment tx" value={DEPLOYMENT_TX} href={DEPLOYMENT_TX ? EXPLORER_URL : ""} />
-          <ProofItem label="Consensus tx" value={CONSENSUS_TX} href={CONSENSUS_TX ? EXPLORER_URL : ""} />
+          <ProofItem label="Source SHA-256" value={SOURCE_HASH} href={SOURCE_COMMIT ? GITHUB_URL + "/blob/" + SOURCE_COMMIT + "/contracts/dispute_dock.py" : ""} />
+          <ProofItem label="Deployment tx" value={DEPLOYMENT_TX} href={DEPLOYMENT_TX ? EXPLORER_URL + "/tx/" + DEPLOYMENT_TX : ""} />
+          <ProofItem label="Consensus tx" value={CONSENSUS_TX} href={CONSENSUS_TX ? EXPLORER_URL + "/tx/" + CONSENSUS_TX : ""} />
         </section>
 
         <TransactionRail tx={tx} onRetry={retryLast} />
@@ -1210,7 +1219,7 @@ function App() {
                 <p>Client and worker roles are enforced by the contract sender address, not by the interface.</p>
               </Panel>
               <Panel eyebrow="Currency" title="Native test GEN" icon={CircleDollarSign}>
-                <p>Studionet currently demonstrates escrow with native test GEN. No claim of real USDC custody is made.</p>
+                <p>Current GenLayer documentation supports native GEN value transfer for Studio testing. Studio does not fully model live chain-layer behavior, and no claim of real-value USDC custody is made.</p>
               </Panel>
               <Panel eyebrow="Authority" title="Contract is the source of truth" icon={Database}>
                 <p>The frontend reads finalized state. It never fabricates verdicts, scores, settlement status, or hashes.</p>

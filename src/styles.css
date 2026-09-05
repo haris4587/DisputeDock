@@ -361,7 +361,7 @@ main {
 
 .proof-strip {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   overflow: hidden;
   margin-bottom: 16px;
   border: 1px solid var(--line);
@@ -1794,8 +1794,13 @@ footer > a {
   }
 
   .proof-item:nth-child(4),
-  .proof-item:nth-child(5) {
+  .proof-item:nth-child(5),
+  .proof-item:nth-child(6) {
     border-bottom: 0;
+  }
+
+  .proof-item:nth-child(6) {
+    border-right: 0;
   }
 
   .desk-grid {
@@ -1864,9 +1869,9 @@ footer > a {
     border-bottom: 1px solid var(--line);
   }
 
-  .proof-item:nth-child(5) {
-    grid-column: 1 / -1;
-    border-right: 0;
+  .proof-item:nth-child(5),
+  .proof-item:nth-child(6) {
+    border-bottom: 0;
   }
 
   .rail-stages {

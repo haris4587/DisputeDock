@@ -1,0 +1,13 @@
+{
+  "network": "GenLayer Studio Network",
+  "chainId": 61999,
+  "contractAddress": "0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42",
+  "contractSourceCommit": "5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd",
+  "contractSourceSha256": "2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b",
+  "deploymentTransaction": "0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a",
+  "deploymentStatus": "FINALIZED",
+  "consensusTransaction": "",
+  "explorerUrl": "https://explorer-studio.genlayer.com",
+  "websiteUrl": "https://disputedock.ansaf1st33.chatgpt.site",
+  "studioTokenTransfersSupported": true
+}

@@ -5,10 +5,24 @@
 [![CI](https://github.com/haris4587/DisputeDock/actions/workflows/ci.yml/badge.svg)](https://github.com/haris4587/DisputeDock/actions/workflows/ci.yml)
 [![GenLayer](https://img.shields.io/badge/GenLayer-Studionet-DC8A58)](https://docs.genlayer.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-66C895.svg)](LICENSE)
+[![Live](https://img.shields.io/badge/Live-disputedock-66C895.svg)](https://disputedock.ansaf1st33.chatgpt.site)
 
 DisputeDock turns a freelance scope into an explicit on-chain state machine. A client commits exact human-written terms, weighted requirements, parties, deadlines, and escrow value. The worker must accept the resulting agreement hash before funding. If a delivery is disputed, GenLayer validators independently retrieve the committed evidence bytes, verify every SHA-256 digest, interpret each requirement, and reach consensus on structured scores. The contract then derives the payout split deterministically.
 
 > Experimental Studionet prototype. It uses native **test GEN**, which has no represented cash value. It is not a production escrow service, legal ruling, or claim of USDC support.
+
+## Verified live deployment
+
+| Field | Verified record |
+|---|---|
+| Application | https://disputedock.ansaf1st33.chatgpt.site |
+| Contract | [0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42](https://explorer-studio.genlayer.com/address/0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42) |
+| Deployment transaction | [0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a](https://explorer-studio.genlayer.com/tx/0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a) |
+| Deployment status | FINALIZED · MAJORITY_AGREE · Normal/Full Consensus · Simulation off |
+| Exact deployed source | Commit `5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd` |
+| Source SHA-256 | `2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b` |
+
+`npm run test:deployment` independently retrieves the deployed code, schema, and transaction from Studionet and fails unless the source bytes, hash, address, 25-method schema, finalized status, and majority-agree result all match this repository.
 
 ## Why this is a GenLayer Builder Project
 
@@ -150,6 +164,7 @@ To verify that the current Studionet RPC recognizes the contract schema:
 
 ~~~bash
 npm run test:schema
+npm run test:deployment
 ~~~
 
 This check needs network access. It asks Studionet to compile and return the schema for the exact contract source; it does not deploy or spend test GEN.
@@ -157,15 +172,15 @@ This check needs network access. It asks Studionet to compile and return the sch
 ## Environment
 
 ~~~dotenv
-VITE_CONTRACT_ADDRESS=
+VITE_CONTRACT_ADDRESS=0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42
 VITE_NETWORK=studionet
 VITE_GITHUB_URL=https://github.com/haris4587/DisputeDock
-VITE_SOURCE_COMMIT=
-VITE_DEPLOYMENT_TX=
+VITE_SOURCE_COMMIT=5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd
+VITE_DEPLOYMENT_TX=0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a
 VITE_CONSENSUS_TX=
 ~~~
 
-Empty proof fields are rendered as **Awaiting verified record**. The application intentionally disables contract writes until a valid deployed address is present.
+The tracked `src/deployment.json` provides the verified public defaults above. Environment variables may override them for a later deployment. Empty unverified fields, including the lifecycle consensus transaction until it exists, render as **Awaiting verified record**.
 
 ## MetaMask behavior
 
@@ -185,7 +200,7 @@ MetaMask does not expose a general programmatic “disconnect site” RPC. The d
 
 ## Currency decision
 
-The working prototype uses native Studionet test GEN through a payable method, the message value, and value-bearing payout messages. The currently used Intelligent Contract and SDK surface was verified for native value. No secure Studionet USDC escrow path is asserted or simulated in this build. Stablecoin support is a future extension and must not be inferred from the 500-unit product example.
+The contract uses native Studionet test GEN through a payable method, `gl.message.value`, and finalized value-bearing payout messages. Current GenLayer documentation explicitly supports these primitives and Studio faucet funding, while warning that Studio is not a complete live chain-layer replica. No secure Studionet USDC escrow path is asserted or simulated. Stablecoin support is a future extension and must not be inferred from the 500-unit product example.
 
 ## Testing status
 

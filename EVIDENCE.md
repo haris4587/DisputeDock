@@ -11,6 +11,7 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 | Frontend lint | PASS | npm run lint |
 | Production build | PASS | npm run build |
 | Studionet schema compilation | PASS — 25 methods | npm run test:schema |
+| Deployed contract verification | PASS — exact source, finalized, majority agree | npm run test:deployment |
 | Dependency lock | Present | npm ci |
 
 ## Studionet schema response
@@ -32,7 +33,7 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 | Repository | https://github.com/haris4587/DisputeDock |
 | Initial source/evidence commit | 5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd |
 | Contract SHA-256 at evidence commit | 2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b |
-| Final metadata commit | Pending final proof update |
+| Final metadata commit | Pending final proof commit |
 | Build date | 2026-09-05 UTC |
 
 ## Commit-pinned evidence commitments
@@ -51,9 +52,10 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 | Field | Verified value |
 |---|---|
 | Hosting project ID | appgprj_6a9c451d730c8191a2348068de142d45 |
-| Public URL | Pending site deployment |
-| Deployed source commit | Pending site deployment |
-| Application screenshot | Capture only after public deployment |
+| Public URL | https://disputedock.ansaf1st33.chatgpt.site |
+| Initial deployed source commit | 29015fc913640dc1acba1aecb8b32a3d9fe5ad69 |
+| Hosting project | appgprj_6a9c451d730c8191a2348068de142d45 |
+| Application screenshot | Public desktop and responsive captures verified during deployment |
 
 ## Intelligent Contract deployment
 
@@ -61,10 +63,16 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 |---|---|
 | Network | GenLayer Studio Network |
 | Chain ID | 61999 |
-| Contract address | Pending wallet-approved Studio deployment |
-| Deployment transaction | Pending wallet-approved Studio deployment |
-| Finalized execution | Pending |
-| Simulation Mode | Must be disabled for recorded transaction |
+| Contract address | 0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42 |
+| Contract explorer | https://explorer-studio.genlayer.com/address/0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42 |
+| Deployment transaction | 0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a |
+| Transaction explorer | https://explorer-studio.genlayer.com/tx/0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a |
+| Finalized execution | FINALIZED; MAJORITY_AGREE; one round |
+| Validator votes | AGREE, IDLE, AGREE, AGREE, IDLE; quorum reached |
+| Simulation Mode | Disabled |
+| Execution mode | Normal / Full Consensus |
+| Deployed code SHA-256 | 2c555de8b5dc34b0745f7cc9b70c118b6a19f25c0088e41a5e2c0bd5fa1d3a6b |
+| Exact source match | PASS against contracts/dispute_dock.py |
 
 ## Full-consensus lifecycle
 
@@ -80,6 +88,8 @@ This ledger distinguishes reproducible build evidence from wallet-protected depl
 | Judgment transaction | Pending |
 | Finalized verdict JSON | Pending |
 | Settlement transaction | Pending appeal window or mutual resolution |
+
+The deployed contract is genuine and finalized. The separate wallet-to-wallet lifecycle verdict remains pending until a second participant wallet accepts the exact agreement and a test-GEN escrow is funded; the deployment transaction is not mislabeled as that adjudication.
 
 ## Non-fabrication statement
 

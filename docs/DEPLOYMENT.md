@@ -11,6 +11,7 @@ npm ci
 python3 -m pip install -r requirements-dev.txt
 npm test
 npm run test:schema
+npm run test:deployment
 ~~~
 
 Expected local contract result: 26 passed.
@@ -39,23 +40,23 @@ The website Evidence Lab can also calculate a local SHA-256 and preflight a publ
 6. Turn Simulation Mode off.
 7. Use Normal/Full Consensus rather than leader-only execution.
 8. Deploy with no constructor arguments.
-9. Approve the wallet transaction.
+9. Confirm the Studio account or external wallet action if prompted.
 10. Wait for finalized execution and confirm it finished without error.
 11. Copy the contract address and deployment transaction hash.
 12. Record both in docs/DEPLOYMENT_RECORD.md and EVIDENCE.md.
 
-The user must personally approve wallet, network, or login prompts. No automation should attempt to bypass them.
+The user must personally approve external-wallet, network, or login prompts. Studio's built-in development account may execute without an external-wallet prompt.
 
 ## 4. Configure the application
 
 Create a local .env file:
 
 ~~~dotenv
-VITE_CONTRACT_ADDRESS=0x_verified_contract_address
+VITE_CONTRACT_ADDRESS=0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42
 VITE_NETWORK=studionet
 VITE_GITHUB_URL=https://github.com/haris4587/DisputeDock
-VITE_SOURCE_COMMIT=verified_source_commit
-VITE_DEPLOYMENT_TX=verified_deployment_transaction
+VITE_SOURCE_COMMIT=5f3cb7ff97cbfcc60f71f30c732bfd9b7e67a9fd
+VITE_DEPLOYMENT_TX=0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a
 VITE_CONSENSUS_TX=
 ~~~
 
@@ -136,4 +137,3 @@ Never replace an old address in the evidence ledger as if it never existed.
 | RPC | https://studio.genlayer.com/api |
 
 Use the chain information exported by the installed genlayer-js package as the application source of truth.
-

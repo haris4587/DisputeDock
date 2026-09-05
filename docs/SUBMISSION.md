@@ -40,11 +40,11 @@ The responsive application includes genuine MetaMask account permission, Studio 
 | Field | Link |
 |---|---|
 | Repository | https://github.com/haris4587/DisputeDock |
-| Public website | To be recorded after genuine deployment |
-| Intelligent Contract | To be recorded after genuine deployment |
-| Deployment transaction | To be recorded after genuine deployment |
+| Public website | https://disputedock.ansaf1st33.chatgpt.site |
+| Intelligent Contract | https://explorer-studio.genlayer.com/address/0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42 |
+| Deployment transaction | https://explorer-studio.genlayer.com/tx/0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a |
 | Full-consensus transaction | To be recorded after genuine adjudication |
-| Evidence ledger | Repository EVIDENCE.md |
+| Evidence ledger | https://github.com/haris4587/DisputeDock/blob/main/EVIDENCE.md |
 
 ## Technical proof
 
@@ -57,8 +57,8 @@ The responsive application includes genuine MetaMask account permission, Studio 
 | Wallet integration | MetaMask provider plus genlayer-js signed writer |
 | Network | GenLayer Studionet, chain 61999 |
 | Currency | Native test GEN only |
+| Live deployment | FINALIZED; MAJORITY_AGREE; exact source match |
 
 ## Disclaimer
 
 Experimental Studionet prototype. Test GEN has no represented cash value. This is not production escrow, legal adjudication, or a claim of USDC support.
-

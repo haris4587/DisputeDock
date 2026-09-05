@@ -6,7 +6,8 @@ DisputeDock uses three layers in order:
 
 1. direct contract execution for fast lifecycle and security coverage;
 2. Studionet RPC schema compilation for current API compatibility;
-3. a real Studio deployment and full-consensus lifecycle transaction with simulation disabled.
+3. live deployment source/status verification;
+4. a real full-consensus lifecycle transaction with simulation disabled.
 
 The first two layers do not need a wallet. The third requires the project owner to approve wallet-protected transactions.
 
@@ -122,6 +123,26 @@ Recorded result:
 
 This is a genuine live RPC compatibility check. It is not a deployment.
 
+## Live deployment verification
+
+~~~bash
+npm run test:deployment
+~~~
+
+This retrieves the deployed contract code, deployed schema, and deployment transaction from Studionet. It fails unless the code is byte-identical to `contracts/dispute_dock.py`, both source hashes match the recorded SHA-256, the transaction targets the recorded address, all 25 methods exist, and the transaction is `FINALIZED` with `MAJORITY_AGREE`.
+
+Recorded result:
+
+~~~text
+contract  0x89Fb9a916Cd9955b06EDb75CfFB855b3701bdF42
+tx        0xb9b6eb7359b9e2f34ad5545fbd8853f66306ed428bda565eb429e9ae640dac2a
+status    FINALIZED
+result    MAJORITY_AGREE
+source    exact match
+methods   25
+verifier  PASS
+~~~
+
 ## Validator-disagreement test
 
 Direct mode captures the custom validator closure. The leader first returns an authenticated 80% result. The validator is then given the same authenticated bytes but a materially different zero-percent model result. The validator returns false because status, overall payout, and criterion tolerances are violated.
@@ -151,7 +172,7 @@ After deployment:
 10. retrieve get_latest_verdict;
 11. record transaction hash, contract address, verdict, source commit, and evidence hashes in EVIDENCE.md.
 
-Until that protected wallet flow is complete, the evidence ledger must say not recorded rather than using sample values.
+The deployment is already finalized and independently verified. Until the distinct-participant lifecycle flow is complete, its verdict fields must say not recorded rather than using sample values.
 
 ## CI
 
