@@ -1,0 +1,11 @@
+networks:
+  default: localnet
+  localnet:
+    leader_only: false
+    default_wait_interval: 1000
+    default_wait_retries: 60
+paths:
+  contracts: contracts
+  artifacts: artifacts
+environment: .env
+

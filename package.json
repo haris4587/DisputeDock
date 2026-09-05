@@ -1,0 +1,29 @@
+{
+  "name": "disputedock",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --max-warnings=0",
+    "test:contract": "python3 -m py_compile contracts/dispute_dock.py && python3 -m pytest -q tests/direct",
+    "test:schema": "node scripts/verify-contract-schema.mjs",
+    "test": "npm run lint && npm run test:contract && npm run build"
+  },
+  "dependencies": {
+    "genlayer-js": "1.1.8",
+    "lucide-react": "1.41.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@vitejs/plugin-react": "6.1.1",
+    "eslint": "10.10.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "17.12.0",
+    "vite": "8.2.2"
+  }
+}
